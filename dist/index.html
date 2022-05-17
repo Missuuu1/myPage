@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+	<meta charset="UTF-8">
+	<title>王彬</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<style>
+		body>i{
+			display: block;
+			color:#00a78e;
+			position:fixed;
+			font-size: 2rem !important;
+			width: 5rem;
+			text-align: center;
+			line-height: 5rem;
+			bottom: 5rem;
+			right: 5rem;
+			z-index: 1;
+			cursor:pointer;
+		}
+		#messageBox{
+		position: fixed;
+		top:-100px;
+		left:50%;
+		transform:translateX(-50%);
+		padding: 1rem;	
+		font-size:1rem;
+		text-align: center;
+		border-radius: 1rem;
+		background-color:#00a78e;
+		opacity: 1;
+		color:#fff;
+		transition: all 800ms ease;
+		z-index: 1;
+	}
+	@media screen and (max-width: 759px){
+		body>i{
+			bottom:1rem;
+			right: 1rem;
+		}
+	}
+	</style>
+<link href="styles-main.css" rel="stylesheet"></head>
+<body>
+		<i class='fa fa-long-arrow-up' id="turnToTop"></i>
+		<div id="messageBox">
+			表白成功,近期会给你回复!
+		</div>
+<script type="text/javascript" src="bundle.8df4f568.js"></script></body>
+<script>
+	function animateScroll(element,speed) {
+	   	var rect=element.getBoundingClientRect();
+	    //获取元素相对窗口的top值，此处应加上窗口本身的偏移
+	    var top=element.offsetTop;
+	    var currentTop=0;
+	   	var requestId;
+	    //采用requestAnimationFrame，平滑动画
+	    function step(timestamp) {
+	      currentTop+=speed;
+	      if(currentTop<=top||element.getBoundingClientRect().top>=speed){
+	        window.scrollTo(0,currentTop);
+	        requestId=window.requestAnimationFrame(step);
+	      }else{
+	      	window.scrollTo(0,currentTop-speed+element.getBoundingClientRect().top);
+	        window.cancelAnimationFrame(requestId);
+	      }
+	    }
+	    window.requestAnimationFrame(step);
+  	}
+  	function turnTop(){
+  		var speed=200;
+  		var requestId;
+  		var top=0;
+	    var currentTop=document.documentElement.scrollTop+document.body.scrollTop;
+	   	var requestId;
+	   	document.getElementById('myphoto').src=""
+  		 function step(timestamp) {
+	      currentTop-=speed;
+	      if(document.documentElement.scrollTop+document.body.scrollTop>top){
+	        window.scrollTo(0,currentTop);
+	        requestId=window.requestAnimationFrame(step);
+	      }else{
+	        window.cancelAnimationFrame(requestId);
+	      }
+	    }
+	    window.requestAnimationFrame(step);
+  	}
+  	document.getElementById('turnToTop').addEventListener('click',turnTop);
+
+</script>
+</html>
